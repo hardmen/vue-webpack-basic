@@ -1,5 +1,7 @@
 const path = require('path');
-const { VueLoaderPlugin } = require('vue-loader');
+const {
+  VueLoaderPlugin
+} = require('vue-loader');
 
 module.exports = {
   mode: 'development',
@@ -11,8 +13,7 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.s?css$/,
         use: [
           'vue-style-loader',
@@ -27,6 +28,19 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         exclude: /node_modules/,
@@ -36,14 +50,6 @@ module.exports = {
             scss: 'vue-style-loader!css-loader!sass-loader',
             sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
           },
-        },
-      },
-      {
-        test: /\.ts$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
         },
       },
     ],
