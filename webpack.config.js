@@ -1,7 +1,5 @@
 const path = require('path');
-const {
-  VueLoaderPlugin
-} = require('vue-loader');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   mode: 'development',
@@ -13,7 +11,8 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.s?css$/,
         use: [
           'vue-style-loader',
@@ -21,7 +20,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
-            }
+            },
           },
           'sass-loader',
         ],
@@ -34,32 +33,30 @@ module.exports = {
         options: {
           esModule: true,
           loaders: {
-            'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
-          }
-        }
+            scss: 'vue-style-loader!css-loader!sass-loader',
+            sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+          },
+        },
       },
       {
         test: /\.ts$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
+          appendTsSuffixTo: [/\.vue$/],
+        },
       },
-    ]
+    ],
   },
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-    }
+      vue$: 'vue/dist/vue.esm.js',
+    },
   },
   devServer: {
     // Support history mode setting
     historyApiFallback: true,
   },
-  plugins: [
-    new VueLoaderPlugin()
-  ]
-}
+  plugins: [new VueLoaderPlugin()],
+};
