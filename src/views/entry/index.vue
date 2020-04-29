@@ -14,10 +14,7 @@
               @click="$router.push({ name: 'Login' })"
             />
           </div>
-          <img
-            :src="require('images/login/login-holder.png')"
-            alt="website demonstration picture"
-          />
+          <img :src="require('images/login/login-holder.png')" alt="website demonstration picture" />
         </section>
 
         <!-- 右边form内容 -->
@@ -29,17 +26,17 @@
 
     <!-- 页脚 -->
     <footer class="login-footer-section">
-      <login-footer />
+      <!-- <login-footer /> -->
     </footer>
   </div>
 </template>
 
 <script>
-import LoginFooter from './components/LoginFooter';
+// import LoginFooter from './components/LoginFooter';
 
 export default {
   components: {
-    LoginFooter,
+    // LoginFooter,
   },
 };
 </script>

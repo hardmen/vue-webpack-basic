@@ -1,7 +1,7 @@
 import { RouteConfig, Route } from 'vue-router';
 
 const login: RouteConfig = {
-  path: '/login/module',
+  path: '/entry/module',
   redirect: '/login',
   component: () => import('../../views/entry/index.vue'),
   children: [
@@ -10,7 +10,7 @@ const login: RouteConfig = {
       path: '/login',
       meta: {
         title: 'Login',
-        logoVisible: true,
+        requiredAuth: true,
       },
       props: (to: Route) => ({
         ...to.params,
@@ -18,48 +18,51 @@ const login: RouteConfig = {
       }),
       component: () => import('../../views/entry/login/index.vue'),
     },
-    // {
-    //   name: 'Register',
-    //   path: '/login/register',
-    //   alias: '/register',
-    //   meta: {
-    //     title: 'Register New Account',
-    //   },
-    //   component: () => import('@/views/entry/register/index.vue'),
-    // },
+    {
+      name: 'Register',
+      path: '/entry/register',
+      alias: '/register',
+      meta: {
+        title: 'Register New Account',
+        requiredAuth: true,
+      },
+      component: () => import('@/views/entry/register/index.vue'),
+    },
     // {
     //   name: 'PasswordReset',
-    //   path: '/login/password/reset',
-    //   alias: '/password/reset',
+    //   path: '/entry/password-reset',
     //   meta: {
     //     title: 'Password Reset',
+    //     requiredAuth: true,
     //   },
     //   component: () => import('@/views/entry/password-reset/index.vue'),
     // },
     // {
     //   name: 'Subscribe',
-    //   path: '/login/subscribe',
+    //   path: '/entry/subscribe',
     //   alias: '/subscribe',
     //   meta: {
     //     title: 'Subscribe',
+    //     requiredAuth: true,
     //   },
     //   component: () => import('@/views/entry/subscribe/index.vue'),
     // },
     // {
     //   name: 'Feedback',
-    //   path: '/login/feedback',
+    //   path: '/entry/feedback',
     //   alias: '/feedback',
     //   meta: {
     //     title: 'Collaboration Request/Comments',
+    //     requiredAuth: true,
     //   },
     //   component: () => import('@/views/entry/feedback/index.vue'),
     // },
     // {
     //   name: 'Trial',
-    //   path: '/login/apply/trial',
-    //   alias: '/apply/trial',
+    //   path: '/entry/trial',
     //   meta: {
     //     title: 'Apply for Trial',
+    //     requiredAuth: true,
     //   },
     //   component: () => import('@/views/entry/trial/index.vue'),
     // },

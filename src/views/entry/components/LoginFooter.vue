@@ -7,8 +7,7 @@
           v-if="link.route"
           :to="{ name: link.route }"
           :target="link.target"
-          >{{ link.title }}</router-link
-        >
+        >{{ link.title }}</router-link>
         <span v-else>{{ link.title }}</span>
       </li>
     </ul>
@@ -17,9 +16,7 @@
     <p class="copyright">
       Copyright
       <span class="copyright-icon">©</span>
-      <a href="http://www.4dshoetech.com/" target="blank"
-        >www.4dshoetech.com,</a
-      >
+      <a href="http://www.4dshoetech.com/" target="blank">www.4dshoetech.com,</a>
       <span class="right-reserved">All Rights Reserved.</span>
     </p>
   </div>

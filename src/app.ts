@@ -1,9 +1,8 @@
 import Vue from 'vue';
 
-import router from './router/index';
+import router from './router/router-config';
 import store from './store/index';
 
-import './utils/test.js';
 // Use some Third-Part plugins
 import './plugins/index';
 
