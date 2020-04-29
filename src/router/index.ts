@@ -4,6 +4,8 @@ import VueRouter from 'vue-router';
 import HomePage from '../views/Home.vue';
 import DetailPage from '../views/Detail.vue';
 
+import namespaces from './routes/index';
+
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -24,5 +26,6 @@ export default new VueRouter({
       path: '/detail',
       component: DetailPage,
     },
+    ...namespaces,
   ],
 });

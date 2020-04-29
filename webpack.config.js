@@ -1,7 +1,5 @@
 const path = require('path');
-const {
-  VueLoaderPlugin
-} = require('vue-loader');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   mode: 'development',
@@ -13,24 +11,80 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   module: {
-    rules: [{
-        test: /\.s?css$/,
+    rules: [
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/images/[name]-[hash:8].[ext]',
+          esModule: false,
+        },
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
-          'vue-style-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/i,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              esModule: true,
+            },
+          },
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              esModule: true,
             },
           },
-          'sass-loader',
+        ],
+      },
+      {
+        test: /\.scss$/i,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              prependData: `$color: red;`,
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.sass$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                indentedSyntax: true,
+              },
+              prependData: `$color: red;`,
+              sourceMap: true,
+            },
+          },
         ],
         exclude: /node_modules/,
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.ts$/,
@@ -55,9 +109,13 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.vue', '.js', '.jsx', '.ts', '.tsx'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
+      '@': path.resolve(__dirname, './src'),
+      components: path.resolve(__dirname, './src/components'),
+      images: path.resolve(__dirname, './src/assets/images'),
+      utils: path.resolve(__dirname, './src/utils'),
     },
   },
   devServer: {
