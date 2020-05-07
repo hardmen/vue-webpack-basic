@@ -9,6 +9,10 @@ import './plugins/index';
 // import HelloVue from './components/HelloVue.vue';
 import App from './App.vue';
 
+import { fakerUsers } from './faker/index';
+
+console.log(fakerUsers(10));
+
 Vue.prototype.$$errorHandler = function() {};
 
 new Vue({
